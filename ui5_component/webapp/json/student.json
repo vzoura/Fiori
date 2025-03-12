@@ -1,0 +1,46 @@
+{
+    "gs_student" : {
+        "Name": "Lee",
+        "Addr": "Seoul",
+        "Major": "Biological"
+    },
+
+    "gs_vehicle" : {
+        "Kind": "Truck",
+        "Weight": "25",
+        "Length": "8m"
+    },
+
+    "gs_confirm" : {
+
+        "cotext" : "Confirm",
+        "cowidth" : "150px",
+        "coicon" : "sap-icon://flight"
+
+    },
+
+    "gs_button" : {
+
+        "text" : "버튼입니다",
+        "width" : "200px",
+        "enabled" : false
+
+    },
+
+    "gs_input1" : {
+
+        "value" : "입력필드",
+        "description" : "Input field",
+        "maxLength" : 20,
+        "width" : "300px",
+        "showClearIcon" : true
+    },
+
+    "gs_input2" : {
+
+        "description" : "컨트롤러에서 세팅",
+        "maxLength" : 10,
+        "width" : "300px"
+    }
+
+}

@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../../../../연습"
+		},
+		{
+			"name": "script_edu",
+			"path": ".."
+		},
+		{
+			"name": "ui5_component",
+			"path": "../../ui5_component"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "script_edu"
+	}
+}

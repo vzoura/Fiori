@@ -1,0 +1,49 @@
+<mvc:View xmlns:launchpad="sap.ushell.ui.launchpad" controllerName="sync6.cl1.scriptedu.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Panel >
+            <VBox>
+                <Input id='word' placeholder="길이를 지정해주세요" width="250px" />
+                <Button id='btn1' text="버튼입니다" press="onFruits()"/>
+                <Button id='btn5' text="{button>/Btext}" icon="{button>/Bicon}" press="onWidth()"/>
+            </VBox>
+        </Panel>
+
+        <Panel >
+            <HBox >
+                <Input id="num1" width='100px' />
+                <Label text="+" />
+                <Input id="num2" width='100px' />
+                <Label text="=" />
+                <Input id='result' editable="false"/>
+                <Button id="btn2" text="calcuate" press="onAdd()" icon="sap-icon://simulate"/>
+                <Button id='clear' text="clear" press="onClear()" icon="sap-icon://status-positive"/>
+            </HBox>
+        </Panel>
+
+        <Panel >
+            <HBox >
+                <Label text="for(a;b;c)" />
+                <Button id='btn3' text="반복구문" press="onFor()" icon="sap-icon://repost" />
+            </HBox>
+        </Panel>
+
+        <Panel >
+            <HBox >
+                <Button id='btn4' text="{/Btntext}" icon="{/Btnicon}" />
+                <Input id='in1' placeholder ="{/gs_input/Inholder}" value="{/gs_input/Intext}" />
+            </HBox>
+        </Panel>
+
+
+
+        <Panel >
+            <HBox >
+                <Input id='car' value="{student>/gs_vehicle/Kind}" description="{student>/gs_vehicle/Length}" />
+            </HBox>
+        </Panel>
+
+    </Page>
+</mvc:View>

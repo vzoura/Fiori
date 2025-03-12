@@ -1,0 +1,32 @@
+<mvc:View controllerName="sync6cl1.ui5component.controller.StudyView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Panel >
+            <VBox >
+                <Button text='{id>/gs_confirm/cotext}' width='{id>/gs_confirm/cowidth}' icon='{id>/gs_confirm/coicon}'/>
+                <Button text='{id>/gs_button/text}' width='{id>/gs_button/width}' enabled='{id>/gs_button/enabled}'/>
+            </VBox>
+        </Panel>
+
+        <Panel >
+            <HBox >
+                <Input id='in1' value="{id>/gs_input1/value}" description="{id>/gs_input1/description}" 
+                       maxLength="{id>/gs_input1/maxLength}" width="{id>/gs_input1/width}"
+                       showClearIcon="{id>/gs_input1/showClearIcon}" />
+                <Input id='in2' description="{id>/gs_input2/description}" maxLength="{id>/gs_input2/maxLengnth}"
+                       width="{id>/gs_input2/width}" />
+            </HBox>
+        </Panel>
+
+
+
+
+
+
+
+
+
+    </Page>
+</mvc:View>

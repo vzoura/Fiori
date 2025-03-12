@@ -1,0 +1,89 @@
+<mvc:View controllerName="sync6.cl1.paymentchart.controller.ChartView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:m="sap.suite.ui.microchart"
+    >
+    <Page id="page" title="{i18n>title}">
+                <viz:VizFrame id="idVizFrame" 
+                                uiConfig="{applicationSet:'fiori'}"
+                                height='100%' 
+                                width="100%" 
+                                vizType='bar'>
+                    <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/PaysumSet}">
+
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Airline" 
+                                value="{Carrid}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Price"
+                                value="{Price}" />
+                            <viz.data:MeasureDefinition name="Total"
+                                value="{Paymentsum}" />
+                            <viz.data:MeasureDefinition name="Total2"
+                                value="{Paymentsum}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                 <viz:feeds>
+                    <viz.feeds:FeedItem 
+                        id='valueAxisFeed' 
+                        uid="valueAxis" 
+                        type="Measure"
+                        values="Price"/>
+                    <viz.feeds:FeedItem 
+                        id='valueAxisFeed2' 
+                        uid="valueAxis" 
+                        type="Measure"
+                        values="Total" />
+                    <viz.feeds:FeedItem 
+                        id='valueAxisFeed3' 
+                        uid="valueAxis" 
+                        type="Measure"
+                        values="Total2" />
+                    <viz.feeds:FeedItem 
+                        id='categoryAxisFeed' 
+                        uid="categoryAxis" 
+                        type="Dimension"
+                        values="Airline" />
+                </viz:feeds>
+
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+
+                </viz:VizFrame>
+
+       
+            <FlexBox width="22rem" height="9rem" alignItems="Start" justifyContent="SpaceBetween">
+		        <items>
+			<m:InteractiveDonutChart selectionChanged="onSelectionChanged" displayedSegments="4" press="press" selectionEnabled="false">
+				<m:segments>
+					<m:InteractiveDonutChartSegment label="Design Phase" value="32" displayedValue="32.0%" color="Error"/>
+					<m:InteractiveDonutChartSegment label="Implementation Phase" value="28" displayedValue="28%" color="Critical"/>
+					<m:InteractiveDonutChartSegment label="Test Phase" value="25" displayedValue="25%" color="Good"/>
+				</m:segments>
+			</m:InteractiveDonutChart>
+	        	</items>
+	        </FlexBox>
+
+            <FlexBox width="700px" height="400px" alignItems="Start" justifyContent="SpaceBetween">
+                <m:InteractiveDonutChart displayedSegments="15" segments="{/PaysumSet}" >
+
+                    <m:InteractiveDonutChartSegment label="{Carrid}" 
+                                                    value="{=parseInt(${Paymentsum})}" 
+                                                    displayedValue="{Paymentsum}"
+                                                    color="Critical" />
+
+                </m:InteractiveDonutChart>
+            </FlexBox>
+
+    </Page>
+</mvc:View>
