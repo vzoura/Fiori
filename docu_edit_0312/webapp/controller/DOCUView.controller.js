@@ -125,7 +125,76 @@ sap.ui.define([
                     MessageToast.show('Error on Create');
                 }
             });
+        },
+
+        onUpdate: function() {
+
+            var oModel = this.getView().getModel();
+            var vWrbtr = this.getView().byId('Wrbtr').getValue().replaceAll(',', ''), // 콤마를 공백으로 바꿔줌
+                vBudat = this.getView().byId('Budat').getValue();
+            const cBudat = new Date(vBudat).toISOString().split('T')[0];
+
+            // let oUpdate2 = {
+            //     Bukrs: this.getView().byId("Bukrs").getValue(),
+            //     Gjahr: this.getView().byId("Gjahr").getValue(),
+            //     Blart: this.getView().byId("Blart").getValue(),
+            //     Budat: cBudat,
+            //     Belnr: this.getView().byId("Belnr").getValue(),
+            //     Bktxt: this.getView().byId("Bktxt").getValue(),
+            //     Waers: this.getView().byId("Waers").getValue(),
+            //     Wrbtr: vWrbtr,
+            // }
+
+            let oUpdate = {
+                Bukrs: this.getView().byId("Bukrs").getValue(),
+                Gjahr: this.getView().byId("Gjahr").getValue(),
+                Blart: this.getView().byId("Blart").getValue(),
+                Budat: cBudat,
+                Belnr: this.getView().byId("Belnr").getValue().toString().padStart(10, '0'),
+                Bktxt: this.getView().byId("Bktxt").getValue(),
+                Waers: this.getView().byId("Waers").getValue(),
+                Wrbtr: vWrbtr,
+            }
+
+            oModel.update("/DocumentSet(Bukrs='" + oUpdate.Bukrs + "',Belnr='" + oUpdate.Belnr + "',Gjahr='" + oUpdate.Gjahr + "')",
+                        
+                            oUpdate,
+                            {
+                                method: 'MERGE',
+                                success: function() {
+                                    oModel.refresh();
+                                    MessageToast.show('Update Successfully!!');
+                                },
+                                error: function() {
+                                    MessageToast.show('Error on Update');
+                                }
+
+                            })
+        },
+
+        onDelete: function() {
+
+            var oModel   = this.getView().getModel(), // Gateway service 실행개체(read, create, update, remove)
+                oTable   = this.getView().byId('docuTable'),
+                aIndex   = oTable.getSelectedIndices(), // go_gird->get_selected_rows와 같음
+                oContext = oTable.getContextByIndex(aIndex[0]), // read table gt_body INTO gs_body INDEX Index 와 같음
+                oData    = oContext.getObject();      // gs_body (single record) 
+                
+
+            oModel.remove("/DocumentSet(Bukrs='" + oData.Bukrs + "',Belnr='" + oData.Belnr.padStart(10, '0') + "',Gjahr='" + oData.Gjahr + "')",
+                        {
+                            method:'DELETE',
+                            success: function() {
+                                oModel.refresh();
+                                MessageToast.show("Delete success");
+                            },
+                            error: function() {
+                                MessageToast.show('Delete error');
+                            }
+                        }
+            )
         }
+
 
     });
 });
