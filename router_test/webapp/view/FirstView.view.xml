@@ -1,0 +1,12 @@
+<mvc:View controllerName="sync6.cl1.routertest.controller.FirstView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page1" title="{i18n>title}">
+    <Panel >
+    <VBox >
+        <Label id="first" text="First page"/>
+        <Button id="btn1" icon="sap-icon://biometric-thumb" text="Go Second view" press="onSecond()" />
+    </VBox>
+    </Panel>
+    </Page>
+</mvc:View>
