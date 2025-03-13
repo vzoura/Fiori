@@ -1,0 +1,135 @@
+<mvc:View controllerName="sync6.cl1.cartexcercise0313.controller.Cart_excerciseView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="page" title="{i18n>title}">
+        <Panel >
+            <VBox >
+                <t:Table 
+                id='carttable'
+                rows="{/CartSet}"
+				selectionMode="Single"
+				paste="onPaste"
+				ariaLabelledBy="title">
+                <t:extension>
+					<OverflowToolbar >
+                            <Button text="Search" icon="sap-icon://search" press="onSearch" />
+                            <Input id="IMAKTX" placeholder="Material text" width="12rem" />
+                            <Input id="ICUSTOM_ID" placeholder="Customer ID" width="10rem" />
+                        </OverflowToolbar>
+				</t:extension>
+                <t:columns>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Shop/@sap:label}" />
+						<t:template>
+							<Text text="{Shop}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/CustomId/@sap:label}" />
+						<t:template>
+							<Text text="{CustomId}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/CartNo/@sap:label}" />
+						<t:template>
+							<Text text="{CartNo}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Matnr/@sap:label}" />
+						<t:template>
+							<Text text="{Matnr}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Maktx/@sap:label}" />
+						<t:template>
+							<Text text="{Maktx}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Amount/@sap:label}" />
+						<t:template>
+                        <Text text="{
+                                        parts:[{path:'Amount'},{path:'Waers'}],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {showMeasure: true}}" wrapping="false" />
+							<!-- <Text text="{Amount}" wrapping="false" /> -->
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Waers/@sap:label}" />
+						<t:template>
+							<Text text="{Waers}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/GoodsCnt/@sap:label}" />
+						<t:template>
+							<Text text="{GoodCnt}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="{/#CartSet/Kind/@sap:label}" />
+						<t:template>
+							<Text text="{Kind}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                </t:columns>
+                </t:Table>
+                <OverflowToolbar >
+                    <ToolbarSpacer width="45rem" />
+                    <Label text="Contents" />
+                    <Button text="Clear"   icon="sap-icon://clear-all" press="onClear"   />
+                    <Button text="Display" icon="sap-icon://display"   press="onDisplay" />
+                    <Button text="Create"  icon="sap-icon://create"    press="onCreate"  />
+                    <Button text="Edit"    icon="sap-icon://edit"      press="onUpdate"  />
+                    <Button text="Delete"  icon="sap-icon://delete"    press="onDelete"  />
+            </OverflowToolbar>
+            <f:SimpleForm   id="contentForm"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="4"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false" >
+                    <f:content>
+                        <Label text="Company" />
+                        <Input id="Shop" placeholder="Shop" width="7rem"/>
+                        <Label text="Custom id" />
+                        <Input id="CustomId" placeholder="User ID" width="5rem"/>
+                        <Label text="CartNo" />
+                        <Input id="CartNo" placeholder="Type" width="4rem"/>
+                        <Label text="Posting date" />
+                        <Input id="Matnr" placeholder="yyyy-MM-dd" width="7rem"/>
+                        <Label text="Cart info" />
+                        <Input id="Maktx" placeholder="Material" width="10rem" maxLength="10"/>
+                        <Label text="Amount" />
+                        <Input id="Amount" placeholder="Amount" width="15rem"/>
+                        <Label text="Currency" />
+                        <Input id="Waers" placeholder="Currency" width="5rem"/>
+                        <Label text="GoodsCnt" />
+                        <Input id="GoodsCnt" placeholder="Count" width="10rem"/>
+                        <Label text="Kind" />
+                        <Input id="Kind" placeholder="Kind" width="10rem"/>
+                    </f:content>
+            </f:SimpleForm>
+            </VBox>
+        </Panel>
+    </Page>
+</mvc:View>

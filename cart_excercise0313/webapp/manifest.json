@@ -1,0 +1,113 @@
+{
+    "_version": "1.60.0",
+    "sap.app": {
+        "id": "sync6.cl1.cartexcercise0313",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.5",
+            "toolsId": "b3981465-287d-4063-b9a0-422cba3aa92f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCL1CART25_01_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.120.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sync6.cl1.cartexcercise0313.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "transition": "slide",
+                "type": "View",
+                "viewType": "XML",
+                "path": "sync6.cl1.cartexcercise0313.view",
+                "async": true,
+                "viewPath": "sync6.cl1.cartexcercise0313.view"
+            },
+            "routes": [
+                {
+                    "name": "RouteCart_excerciseView",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetCart_excerciseView"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetCart_excerciseView": {
+                    "id": "Cart_excerciseView",
+                    "name": "Cart_excerciseView"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "sync6.cl1.cartexcercise0313.view.App",
+            "type": "XML",
+            "id": "App"
+        }
+    }
+}

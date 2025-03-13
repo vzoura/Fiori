@@ -27,7 +27,7 @@ sap.ui.define([
             var vBktxt = this.getView().byId('IBktxt').getValue();
             var vBlart = this.getView().byId('IBlart').getValue();
 
-            var oTable = this.getView().byId('docuTable'), // View의 테이블 개체 받아오기
+            var oTable = this.getView().byId('docuTable'), // View의 테이블 개체 받아오기(entitySet)
                 oBinding = oTable.getBinding('rows'),      // 검색을 해주는 개체, filter사용 가능
                 oFilter  = null,                           // 검색어를 구성해주는 개체
                 aFilter  = [];                             // 배열에 검색어를 담아줌
@@ -98,9 +98,10 @@ sap.ui.define([
         onCreate: function() {
 
             var oModel = this.getView().getModel();
-            var vWrbtr = this.getView().byId('Wrbtr').getValue().replaceAll(',', ''), // 콤마를 공백으로 바꿔줌
+            var vWrbtr = this.getView().byId('Wrbtr').getValue().replaceAll(',', ''), 
+                // 콤마를 공백으로 바꿔줌(사용자가 금액에 ,를 넣는 경우를 방지함)
                 vBudat = this.getView().byId('Budat').getValue();
-            const cBudat = new Date(vBudat).toISOString().split('T')[0];
+            const cBudat = new Date(vBudat).toISOString().split('T')[0]; 
 
             let oCreate = {
                 Bukrs: this.getView().byId("Bukrs").getValue(),
@@ -118,7 +119,9 @@ sap.ui.define([
                 method:'POST',
                 success: function() {
                     MessageToast.show('Create Successfully!!');
-                    oModel.refresh(); // 생성에 성공하면 model data를 refresh
+                    oModel.refresh(); 
+                    // 생성에 성공하면 model data를 refresh 
+                    // 현재 버전에서는 자동으로 refresh되지만, 낮은 버전에서는 안통할 수 있으니 추가할 것
                     
                 },
                 error: function() {
@@ -194,7 +197,6 @@ sap.ui.define([
                         }
             )
         }
-
 
     });
 });

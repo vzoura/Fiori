@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: sync6.cl1.cartexcercise0313
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://bgissap1.bgissap.co.kr:8000
+          client: '100'
+        app:
+          name: ZGWCL1CART25_01
+          description: cart_excercise
+          package: ZCL125
+          transport: EFXK900831
+        exclude:
+          - /test/
