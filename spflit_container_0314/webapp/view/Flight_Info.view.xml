@@ -1,0 +1,140 @@
+<mvc:View controllerName="flightinfo0314.flightinfo0314.controller.Flight_Info"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    >
+    <Page id="page1" title="{i18n>title}">
+    <SplitContainer 
+            id="AirlineSplit"
+            initialDetail="detail"
+            initialMaster="master">
+        <masterPages>
+            <Page
+				id="masterpage"
+				title="Airline info"
+				backgroundDesign= "List">
+				<List items="{/f_scarrSet}">
+					<StandardListItem icon="sap-icon://flight" title="{Carrname}" description="{Carrid}" type='Navigation' press="onSpfli" />
+				</List>
+			</Page>
+        </masterPages>
+
+        <detailPages>
+			<!-- SPFLIGHT Table -->
+            <Page
+				id="detailpage"
+				title="Detail 1"
+				backgroundDesign= "Solid"
+				>
+                <VBox >
+                <t:Table 
+                    id='sflight'
+                    title='Flight Schedule'
+                    rows="{/f_sflightSet}"
+                    selectionMode="Single"
+                    paste="onPaste"
+                    ariaLabelledBy="title"
+					>
+                    <t:columns>
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Carrid/@sap:label}" />
+						<t:template>
+							<Text text="{Carrid}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Connid/@sap:label}" />
+						<t:template>
+							<Text text="{Connid}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Fldate/@sap:label}" />
+						<t:template>
+							<Text text="{Fldate}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Price/@sap:label}" />
+						<t:template>
+							<Text text="{Price}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Currency/@sap:label}" />
+						<t:template>
+							<Text text="{Currency}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_sflightSet/Planetype/@sap:label}" />
+						<t:template>
+							<Text text="{Planetype}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                    </t:columns>
+                </t:Table>
+
+				<OverflowToolbar >
+				
+				
+				</OverflowToolbar>
+
+				<!-- SPFLI Table -->
+                <t:Table 
+                    id='spfli'
+                    title='Flight Info'
+                    rows="{/f_spfliSet}"
+                    selectionMode="Single"
+                    paste="onPaste"
+                    ariaLabelledBy="title"
+					cellClick="onSflight">
+                    <t:columns>
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Carrid/@sap:label}" />
+						<t:template>
+							<Text text="{Carrid}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Connid/@sap:label}" />
+						<t:template>
+							<Text text="{Connid}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Countryfr/@sap:label}" />
+						<t:template>
+							<Text text="{Countryfr}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Cityfrom/@sap:label}" />
+						<t:template>
+							<Text text="{Cityfrom}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Countryto/@sap:label}" />
+						<t:template>
+							<Text text="{Countryto}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                        <t:Column width="11rem">
+						<Label text="{/#f_spfliSet/Cityto/@sap:label}" />
+						<t:template>
+							<Text text="{Cityto}" wrapping="false" />
+						</t:template>
+				    	</t:Column> 
+                    </t:columns>
+
+                </t:Table>
+                
+                </VBox>
+			</Page>
+      
+        </detailPages>
+
+    </SplitContainer>
+    </Page>
+</mvc:View>
