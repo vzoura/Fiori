@@ -1,7 +1,7 @@
 {
     "_version": "1.60.0",
     "sap.app": {
-        "id": "flightinfo0314.flightinfo0314",
+        "id": "seatsdata.bookinfo0317",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -13,11 +13,11 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:basic",
             "version": "1.16.5",
-            "toolsId": "c8156d40-da38-4506-b448-0b27b10d7dc4"
+            "toolsId": "bef7cbe4-582f-48dd-afa3-135f7723f759"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZGWCL1FINFO25_SRV/",
+                "uri": "/sap/opu/odata/sap/ZGWCL1FINAL25_SRV/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -26,9 +26,7 @@
                 }
             }
         }
-}
     },
-    
     "sap.ui": {
         "technology": "UI5",
         "icons": {
@@ -62,7 +60,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "flightinfo0314.flightinfo0314.i18n.i18n"
+                    "bundleName": "seatsdata.bookinfo0317.i18n.i18n"
                 }
             },
             "": {
@@ -86,28 +84,28 @@
                 "transition": "slide",
                 "type": "View",
                 "viewType": "XML",
-                "path": "flightinfo0314.flightinfo0314.view",
+                "path": "seatsdata.bookinfo0317.view",
                 "async": true,
-                "viewPath": "flightinfo0314.flightinfo0314.view"
+                "viewPath": "seatsdata.bookinfo0317.view"
             },
             "routes": [
                 {
-                    "name": "RouteFlight_Info",
+                    "name": "RouteSeats_Data",
                     "pattern": ":?query:",
                     "target": [
-                        "TargetFlight_Info"
+                        "TargetSeats_Data"
                     ]
                 }
             ],
             "targets": {
-                "TargetFlight_Info": {
-                    "id": "Flight_Info",
-                    "name": "Flight_Info"
+                "TargetSeats_Data": {
+                    "id": "Seats_Data",
+                    "name": "Seats_Data"
                 }
             }
         },
         "rootView": {
-            "viewName": "flightinfo0314.flightinfo0314.view.App",
+            "viewName": "seatsdata.bookinfo0317.view.App",
             "type": "XML",
             "id": "App"
         }

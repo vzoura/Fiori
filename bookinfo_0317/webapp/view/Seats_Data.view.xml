@@ -1,0 +1,59 @@
+<mvc:View controllerName="seatsdata.bookinfo0317.controller.Seats_Data"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:m="sap.suite.ui.microchart"
+    >
+    <Page id="page" title="{i18n>title}">
+
+    <viz:VizFrame id="idVizFrame" 
+                                uiConfig="{applicationSet:'fiori'}"
+                                height='100%' 
+                                width="100%" 
+                                vizType='bar'>
+                    <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/booking_infoSet}">
+
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Carrname" 
+                                value="{Carrname}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="seatsmax"
+                                value="{Seatsmax}" />
+                            <viz.data:MeasureDefinition name="seatsocc"
+                                value="{Seatsocc}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                 <viz:feeds>
+                    <viz.feeds:FeedItem 
+                        id='valueAxisFeed' 
+                        uid="valueAxis" 
+                        type="Measure"
+                        values="seatsmax"/>
+                    <viz.feeds:FeedItem 
+                        id='valueAxisFeed2' 
+                        uid="valueAxis" 
+                        type="Measure"
+                        values="seatsocc" />
+    
+                    <viz.feeds:FeedItem 
+                        id='categoryAxisFeed' 
+                        uid="categoryAxis" 
+                        type="Dimension"
+                        values="Carrname" />
+                </viz:feeds>
+
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+
+                </viz:VizFrame>
+    </Page>
+</mvc:View>
